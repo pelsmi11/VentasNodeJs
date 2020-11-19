@@ -154,11 +154,33 @@ function eliminar(req,res){
             res.status(500).send({message: 'error en el servidor'});
         }else{
             if(producto_delete){
+                
+                    fs.unlink('./uploads/productos/'+producto_delete.imagen, (err)=>{
+                        if(err) throw err;
+                    });
+                
                 res.status(200).send({producto_delete});
                 
             }else{
                 res.status(403).send({message: 'error al eliminar el producto'});
             }
+        }
+    });
+}
+
+function update_stock(req,res){
+    let id = req.params['id'];
+    let data = req.body
+
+    Producto.findById(id,(err,producto_data)=>{
+        if(producto_data){
+            producto.findByIdAndUpdate(id,{stock: parseInt(producto_data.stock)+parseInt(data.stock)},(err,producto_edit)=>{
+                if(producto_edit){
+                    res.status(200).send(producto_edit)
+                }else{
+                    res.status(500).send(err);
+                }
+            });
         }
     });
 }
@@ -168,4 +190,5 @@ module.exports={
     editar,
     eliminar,
     listar,
+    update_stock,
 }

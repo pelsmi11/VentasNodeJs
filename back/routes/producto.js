@@ -11,6 +11,7 @@ api.get('/productos/:titulo?',productoController.listar);
 api.put('/producto/editar/:id/:img?',path,productoController.editar);
 api.get('/producto/registro/:id',productoController.obtener_producto);
 api.delete('/producto/eliminar/:id',productoController.eliminar);
+api.put('/producto/stock/:id',productoController.update_stock);
 //api.get('/categorias/:nombre?',categoriaController.listar);
 
 module.exports = api;

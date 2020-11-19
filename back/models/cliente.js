@@ -6,7 +6,7 @@ var ClienteSchema= mongoose.Schema({
     dpi: String,
     correo: String,
     puntos: Number,
-    
+    createAt: {type: Date, default: Date.now}
 });
 
-module.exports = mongoose.model('cliente',ClienteoSchema);
+module.exports = mongoose.model('cliente',ClienteSchema);

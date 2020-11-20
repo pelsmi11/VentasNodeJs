@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var schema =   mongoose.schema;
 
 var VentaSchema= mongoose.Schema({
-    idcliente: {type: schema.ObjectId, ref: 'cliente'},
-    iduser: {type: schema.ObjectId, ref: 'user'},
+    idcliente: {type: mongoose.Schema.ObjectId, ref: 'cliente'},
+    iduser: {type: mongoose.Schema.ObjectId, ref: 'user'},
     fecha:  {type: Date,default: Date.now},
    
 });
